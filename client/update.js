@@ -7,9 +7,13 @@ $.ajax({
     url: '/api/Allchirps/' + id
 }).then(function (chirp) {
     $('#chirp-message').val(chirp.message);
+    var $user = $('<h4></h4>');
+    $user.text(chirp.username);
+    $user.appendTo($('#chirp-list'));
 }, function (error) {
     console.log(error);
 });
+
 
 $('#update-button').click(function () {
     var payload = {

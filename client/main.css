@@ -34,8 +34,8 @@ body {
     background-color: lightblue;
 }
 
-#Chirp-message {
-    background: white;
+#chirp-message {
+     background: rgba(76, 175, 80, 0.3);
 
 }
 
