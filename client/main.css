@@ -3,6 +3,10 @@
   src:url('fonts')
 }
 
+a {
+    color: black;
+}
+
 .page-header {
 text-align: center;
 margin: 25px;
@@ -32,7 +36,7 @@ body {
 
 #Chirp-message {
     background: white;
-    
+
 }
 
 #chirp-field {
@@ -40,7 +44,7 @@ body {
 }
 
 #chirp-btn {
-    background-color: transparent;
+    background-color: lightgray;
     border: 1px solid black;
     color: black;
     border-radius: 0.5em;
@@ -51,7 +55,7 @@ body {
 }
 
 #user-selector {
-    background-color: lightslategray;
+    background-color: lightgray;
 }
 
 .chirp-box {
@@ -83,3 +87,8 @@ body {
     border-radius: 0.5em;
 }
  
+#update-button {
+    margin: 15px;
+    border-radius: 0.5em;
+    bottom: 55px;
+}

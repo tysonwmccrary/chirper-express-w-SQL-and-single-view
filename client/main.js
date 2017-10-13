@@ -58,7 +58,7 @@ function addChirpDiv(chirp) {
     var $message = $('<p></p>');
     var $user = $('<h4></h4>');
     var $timestamp = $('<h5></h5>');
-    var $delButton = $('<button class="delete-button btn-danger btn-sm">Delete <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>');
+    var $delButton = $('<button class="delete-button btn-danger btn-md">Delete <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>');
     var $link = $('<a></a>');
     $link.attr('href', '/Allchirps/' + chirp.id);
     $delButton.click(function () {
@@ -77,8 +77,8 @@ function addChirpDiv(chirp) {
     $delButton.appendTo($chirpDiv);
 
     //Places the chirpDiv into the chirpList Div.
-    $chirpDiv.appendTo($link);
-    $link.appendTo($chirpList); //This is the links to change views.
+    $chirpDiv.appendTo($link); //This makes all the chirps linkable.
+    $link.appendTo($chirpList); //This places all linkable chirps into the div chirplist.
 }
 
 //Use ajax to delete chirps for the SQL chirper database, Allchirps Table.

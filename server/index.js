@@ -20,6 +20,21 @@ var clientPath = path.join(__dirname, "../client");
 app.use(express.static(clientPath)); //This will read all files in the client path.
 app.use(bodyParser.json()); //Turns the json data into javascript.
 
+//Using Express to route to databases on different html pages.
+app.get('/Allchirps', function (req, res) {
+    res.sendFile(path.join(clientPath, 'list.html'));
+});
+
+app.get('/Allchirps/*/update', function (req, res) {
+    res.sendFile(path.join(clientPath, 'single_update.html'));
+});
+
+app.get('/Allchirps/*', function (req, res) {
+    res.sendFile(path.join(clientPath, 'single_view.html'));
+});
+
+//Using Express to route to procedures in SQL database.
+
 app.route("/api/Allchirps") //Sends and recieves information. Used from Ajax on main.js.
     .get(function (request, response) { //Gets the information from SQL.
         rows("GetChirps") //This is the name of the procedure use in SQL.

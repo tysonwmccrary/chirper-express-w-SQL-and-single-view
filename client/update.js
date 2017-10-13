@@ -7,8 +7,8 @@ $.ajax({
     url: '/api/Allchirps/' + id
 }).then(function (chirp) {
     $('#chirp-message').val(chirp.message);
-}, function (err) {
-    console.log(err);
+}, function (error) {
+    console.log(error);
 });
 
 $('#update-button').click(function () {
@@ -22,7 +22,7 @@ $('#update-button').click(function () {
         data: JSON.stringify(payload)
     }).then(function () {
         window.history.back();
-    }, function (err) {
-        console.log(err);
+    }, function (error) {
+        console.log(error);
     });
 });

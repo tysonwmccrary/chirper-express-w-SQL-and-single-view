@@ -1,6 +1,6 @@
-var path = window.location.pathname; // /chirps/12
+var path = window.location.pathname; //Shows the link path of each chirp in database.
 var pieces = path.split('/'); //This will split the url into seperate directories.
-var id = pieces[2]; // 12
+var id = pieces[2]; 
 
 //Use Ajax to receive information from the SQL database.
 
@@ -9,8 +9,8 @@ $.ajax({
     url: '/api/Allchirps/' + id
 }).then(function (chirp) {
     addChirpDiv(chirp);
-}, function (err) {
-    console.log(err);
+}, function (error) {
+    console.log(error);
 });
 
 function addChirpDiv(chirp) {
@@ -19,11 +19,11 @@ function addChirpDiv(chirp) {
     var $user = $('<h4></h4>');
     var $timestamp = $('<h5></h5>');
     var $buttonBlock = $('<div class="button-block"></div>');
-    var $editButton = $('<button class="fancy-button">Update</button>');
-    $editButton.click(function () {
+    var $updateButton = $('<button type="button" id="update-button" class="btn-warning btn-md">Update <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>');
+    $updateButton.click(function () {
         window.location.pathname = '/Allchirps/' + id + '/update';
     });
-    var $delButton = $('<button class="delete-button btn-danger btn-sm">Delete <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>');
+    var $delButton = $('<button class="delete-button btn-danger btn-md">Delete <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>');
     $delButton.click(function () {
         if (confirm('Are you sure you want to delete this chirp?')) {
             $.ajax({
@@ -31,17 +31,17 @@ function addChirpDiv(chirp) {
                 url: '/api/Allchirps/' + id
             }).then(function () {
                 window.location.replace('/Allchirps');
-            }, function (err) {
-                console.log(err);
+            }, function (error) {
+                console.log(error);
             });
         }
     });
 
     $message.text(chirp.message);
-    $user.text(chirp.userName);
+    $user.text(chirp.username);
     $timestamp.text(new Date(chirp.timestamp).toLocaleString());
 
-    $buttonBlock.append($editButton);
+    $buttonBlock.append($updateButton);
     $buttonBlock.append($delButton);
 
     $message.appendTo($chirpDiv);
